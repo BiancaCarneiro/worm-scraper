@@ -1,15 +1,16 @@
 # coding=utf-8
 from scraper import Skitter, TABLE_OF_CONTENTS
 from ebooklib import epub
+from tqdm.auto import tqdm
 
-NUM_BOOKS = 3
-BOOKS_DIVIDERS = ["infestation", "imago", "last_book"]
+NUM_BOOKS = 8
+BOOKS_DIVIDERS = ["hive", "extermination", "plage", "colony", "queen", "imago", "sting", "last_book"]
 
 def create_book(book_title:list, book_author:str, book_language:str, book_cover:str):
     crawling_bug = Skitter(TABLE_OF_CONTENTS)
     crawling_bug.get_links()
     # chapters
-    for book_number in range(NUM_BOOKS):
+    for book_number in tqdm(range(NUM_BOOKS)):
         book = epub.EpubBook()
 
         # add metadata
@@ -93,4 +94,4 @@ nav[epub|type~='toc'] > ol > li > ol > li {
         epub.write_epub(f'{book_title[book_number]}.epub', book, {})
     
 if __name__ == '__main__':
-    create_book(["WORM vol 1", "WORM vol 2", "WORM vol 3"], "Wildbow", "en", ["covers/cover_1.png", "covers/cover_2.png", "covers/cover_3.png"])
+    create_book([f"WORM vol {n+1}" for n in range(NUM_BOOKS)], "Wildbow", "en", [f"covers/cover_{n+1}.png" for n in range(NUM_BOOKS)])

@@ -11,9 +11,10 @@ class Skitter:
     def get_links(self):
         response = requests.get(self.url)
         soup = BeautifulSoup(response.text, 'html.parser')
-        for section in soup.find_all("strong"):
-            for link in section.find_all('a'):
-                self.links.append(link.get('href'))
+        for _link in soup.find_all('a'):
+            link = _link.get('href')
+            if link and "https://parahumans.wordpress.com/" in link and "table-of-contents" not in link:
+                self.links.append(link)
 
     def print_links(self):
         for link in self.links:
