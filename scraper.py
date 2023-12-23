@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 TABLE_OF_CONTENTS = "https://parahumans.wordpress.com/table-of-contents/"
 
 class Skitter:
-    def __init__(self, url):
+    def __init__(self, url: str):
         self.url = url
         self.links = []
 
