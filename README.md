@@ -1,4 +1,4 @@
-# worm-scraper
+# Worm Scraper
 Web scraper for parahumans novel
 
 All rights to Wildbow. 
