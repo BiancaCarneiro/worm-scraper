@@ -1,5 +1,6 @@
 # Worm Scraper
-Web scraper for parahumans novel
+
+Web scraper for parahumans novel, gatters the book from https://parahumans.wordpress.com/ and transforms it into an epub.
 
 All rights to Wildbow. 
 
